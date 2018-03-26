@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.ui.theme" value="simple" />
+	<package name="default" extends="struts-default" namespace="/">
+	
+		<action name="login" class="com.sr.actions.LoginAction">
+		<result name="validate" >ViewComp.jsp</result>
+		<result name="success">/welcome.jsp</result>
+		<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="signup" class="com.sr.actions.SignupAction">
+		<result name="success">/login.jsp</result>
+		<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="post" class="com.sr.actions.WpostAction">
+		<result name="success">/welcome.jsp</result>
+		<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="wposts" class="com.sr.actions.FetchWpost">
+		<result name="success">wposts.jsp</result>
+		<result name="error">/error.jsp</result>
+		
+		</action>
+		
+		<action name="userImage" class="com.sr.actions.FileUploadAction">
+		<result name="success">/welcome.jsp</result>
+	            <result name="error">/error.jsp</result>  
+	            <result name="input">/SuccessImage.jsp</result>  
+	            <interceptor-ref name="fileUpload">  
+               <param name="maximumSize">2097152</param>  
+	  
+	                <param name="allowedTypes">  
+	                    image/png,image/gif,image/jpeg,image/pjpeg  
+	                                </param>  
+	            </interceptor-ref>  
+	            <interceptor-ref name="defaultStack"></interceptor-ref>  
+	              
+        </action>  
+
+	</package>
+</struts>
